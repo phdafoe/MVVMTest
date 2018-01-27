@@ -18,8 +18,6 @@ class ViewController: UIViewController   {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        myTableView.estimatedRowHeight = 60
-        myTableView.rowHeight = UITableViewAutomaticDimension
         
         self.title = "Top peliculas"
         
