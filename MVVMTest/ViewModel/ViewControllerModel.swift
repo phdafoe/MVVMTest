@@ -11,7 +11,6 @@ import UIKit
 
 class ViewControllerModel {
     
-    
     var provider = RemoteItunesService()
     var arrayMovies : [MovieModel]?
     
@@ -26,8 +25,8 @@ class ViewControllerModel {
         return arrayMovies?.count ?? 0
     }
     
-    func titleForItemAtIndexPath(_ indexPath : IndexPath) -> String{
-        return (arrayMovies?[indexPath.row].title)!
+    func informationForItemAtIndexPath(_ indexPath : IndexPath) -> MovieModel {
+        return (arrayMovies?[indexPath.row])!
     }
 
 }

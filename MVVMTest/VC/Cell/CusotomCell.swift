@@ -10,7 +10,11 @@ import UIKit
 
 class CusotomCell: UITableViewCell {
     
+    @IBOutlet weak var myTitleText: UILabel!
+    @IBOutlet weak var myCategoriatext: UILabel!
+    @IBOutlet weak var myDirectortext: UILabel!
     @IBOutlet weak var mySummaryText: UILabel!
+    @IBOutlet weak var myImageMovie: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

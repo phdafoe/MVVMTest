@@ -20,13 +20,15 @@ class RemoteItunesService{
                             switch responseData.result{
                             case .success:
                                 guard let valorData = responseData.result.value else{return}
-                                let jsonData = JSON(valorData)
-                                var resultData = [MovieModel]()
-                                for c_entry in jsonData["feed"]["entry"].arrayValue{
-                                    let movieDicionary = MovieModel(json: c_entry)
-                                    resultData.append(movieDicionary)
+                                jsonData = JSON(valorData)
+                                if let jsonDatDes = jsonData{
+                                    var resultData = [MovieModel]()
+                                    for c_entry in jsonDatDes["feed"]["entry"].arrayValue{
+                                        let movieDicionary = MovieModel(json: c_entry)
+                                        resultData.append(movieDicionary)
+                                    }
+                                    completion(resultData)
                                 }
-                                completion(resultData)
                             case . failure(let error):
                                 print("Error: \(error.localizedDescription)")
                                 completion(nil)

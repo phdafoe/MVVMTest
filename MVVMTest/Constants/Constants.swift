@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 //MARK: - TYPEALIAs
 typealias arrayDictionary = [dictionary]
 typealias dictionary = [String : Any]
+var jsonData : JSON?
 
 //ESTRUCTURA DE CONSTANTES
 let CONSTANTS = Constants()
@@ -20,5 +22,5 @@ struct Constants {
 }
 
 struct Urls {
-    let URL_TOP = "https://itunes.apple.com/es/rss/topmovies/limit=99/json"
+    let URL_TOP = "https://itunes.apple.com/us/rss/topmovies/limit=10/json"
 }

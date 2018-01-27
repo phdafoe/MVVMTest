@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 
 class ViewController: UIViewController   {
@@ -24,8 +25,7 @@ class ViewController: UIViewController   {
         
         //TODO: - Registro de celda
         myTableView.register(UINib(nibName: "CusotomCell", bundle: nil), forCellReuseIdentifier: "CusotomCell")
-        
-        
+
         viewModel.fetchMoviesFromMoviesClient {
             DispatchQueue.main.async {
                 self.myTableView.reloadData()
@@ -46,13 +46,22 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myTableView.dequeueReusableCell(withIdentifier: "CusotomCell", for: indexPath) as! CusotomCell
-        configuredCell(cell, forRowAtIndexPath : indexPath)
+        configuredCell(cell, forRowAtIndexPath: indexPath)
         return cell
         
     }
     
     func configuredCell(_ cell : CusotomCell, forRowAtIndexPath indexPath: IndexPath){
-        cell.mySummaryText.text = viewModel.titleForItemAtIndexPath(indexPath)
+        let model = viewModel.informationForItemAtIndexPath(indexPath)
+        cell.myTitleText.text = model.title
+        cell.myCategoriatext.text = model.category
+        cell.myDirectortext.text = model.director
+        cell.mySummaryText.text = model.summary
+        cell.myImageMovie.kf.setImage(with: ImageResource(downloadURL: URL(string: model.image!)!),
+                                      placeholder: nil,
+                                      options: [.transition(ImageTransition.fade(1))],
+                                      progressBlock: nil,
+                                      completionHandler: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
