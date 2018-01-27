@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
 
-    //Creamos la propiedad de la vista modelo añadiendo un objeto y si enlace a el Storyboard
-    @IBOutlet weak var viewModel : ViewControllerModel!
+class ViewController: UIViewController   {
+
+    let viewModel = ViewControllerModel()
     @IBOutlet weak var myTableView: UITableView!
     
     override func viewDidLoad() {
@@ -25,16 +25,14 @@ class ViewController: UIViewController {
         //TODO: - Registro de celda
         myTableView.register(UINib(nibName: "CusotomCell", bundle: nil), forCellReuseIdentifier: "CusotomCell")
         
-        //Solicitud de datos
+        
         viewModel.fetchMoviesFromMoviesClient {
             DispatchQueue.main.async {
                 self.myTableView.reloadData()
             }
         }
-        
     }
-
-
+    
 }
 
 extension ViewController : UITableViewDelegate, UITableViewDataSource{
@@ -66,4 +64,6 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource{
     }
     
 }
+
+
 

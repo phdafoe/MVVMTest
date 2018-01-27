@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MVVMTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="MVVMTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,16 +58,9 @@
                     <navigationItem key="navigationItem" id="vwY-bw-8Tf"/>
                     <connections>
                         <outlet property="myTableView" destination="TW8-2Z-4Tp" id="xbN-He-0Cj"/>
-                        <outlet property="viewModel" destination="H1M-ED-x3l" id="1d4-Nf-fek"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <customObject id="dif-Fl-XXY" customClass="MoviesClient" customModule="MVVMTest" customModuleProvider="target"/>
-                <customObject id="H1M-ED-x3l" customClass="ViewControllerModel" customModule="MVVMTest" customModuleProvider="target">
-                    <connections>
-                        <outlet property="moviesClient" destination="dif-Fl-XXY" id="ur3-jK-Bwr"/>
-                    </connections>
-                </customObject>
             </objects>
             <point key="canvasLocation" x="476" y="133.5832083958021"/>
         </scene>

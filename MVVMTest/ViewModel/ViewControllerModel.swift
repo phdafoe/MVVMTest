@@ -8,17 +8,16 @@
 
 import UIKit
 
-class ViewControllerModel: NSObject {
-    
-    //Variables o propiedades
-    @IBOutlet weak var moviesClient : MoviesClient!
-    var arrayMovies : [customDictionary]?
+
+class ViewControllerModel {
     
     
-    //LLamada
+    var provider = RemoteItunesService()
+    var arrayMovies : [MovieModel]?
+    
     func fetchMoviesFromMoviesClient(_ completion : @escaping () -> ()){
-        moviesClient.fetchMoviesFromWebService{ movies in
-            self.arrayMovies = movies
+        provider.getTopMovies { (data) in
+            self.arrayMovies = data
             completion()
         }
     }
@@ -28,7 +27,7 @@ class ViewControllerModel: NSObject {
     }
     
     func titleForItemAtIndexPath(_ indexPath : IndexPath) -> String{
-        return arrayMovies?[indexPath.row].value(forKeyPath: "summary.label")as? String ?? ""
+        return (arrayMovies?[indexPath.row].title)!
     }
 
 }
